@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="480" viewBox="0 0 720 480">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ff7a00"/>
+      <stop offset="100%" stop-color="#f43f5e"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="480" rx="20" fill="#0b0e13"/>
+  <g opacity=".12">
+    <path d="M0,430 C200,350 520,570 720,430" stroke="url(#lg)" stroke-width="3" fill="none"/>
+    <path d="M0,360 C200,280 520,500 720,360" stroke="url(#lg)" stroke-width="2" fill="none"/>
+  </g>
+  
+  <g stroke="url(#lg)" fill="none" stroke-width="2" opacity=".9">
+    <polyline points="80,360 180,300 260,320 360,260 460,310 560,200" />
+    <circle cx="80" cy="360" r="4" fill="url(#lg)" />
+    <circle cx="560" cy="200" r="6" fill="url(#lg)" />
+  </g>
+  <text x="40" y="60" fill="white" font-family="Inter" font-size="18" opacity=".85">Landing: +51% conversión</text>
+
+</svg>

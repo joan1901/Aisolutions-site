@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AI Solutions — Desarrollo web, landings, automatizaciones e InstaAds</title>
+  <meta name="description" content="Desarrollo y digitalización web, landings que convierten, automatizaciones para empresas, soluciones a medida y marketing/publicidad. InstaAds disponible y Google Ads próximamente.">
+  <meta name="robots" content="index,follow">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://a-i-solutions.org/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="AI Solutions">
+  <meta property="og:url" content="https://a-i-solutions.org/">
+  <meta property="og:title" content="AI Solutions — Desarrollo web, landings, automatizaciones e InstaAds">
+  <meta property="og:description" content="Desarrollo y digitalización web, landings que convierten, automatizaciones para empresas, soluciones a medida y marketing/publicidad. InstaAds disponible y Google Ads próximamente.">
+  <meta property="og:image" content="https://a-i-solutions.org/og-cover.svg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Solutions — Desarrollo web, landings, automatizaciones e InstaAds">
+  <meta name="twitter:description" content="Desarrollo y digitalización web, landings que convierten, automatizaciones para empresas, soluciones a medida y marketing/publicidad. InstaAds disponible y Google Ads próximamente.">
+  <meta name="twitter:image" content="https://a-i-solutions.org/og-cover.svg">
+
+  <!-- Icons -->
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <!-- Usamos el logo como apple-touch-icon (placeholder) -->
+  <link rel="apple-touch-icon" href="/logo.png" sizes="180x180">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Preload logo (alta prioridad) -->
+  <link rel="preload" as="image" href="/logo.png" fetchpriority="high" imagesrcset="/logo.png 1x">
+
+  <!-- Tailwind CDN (sin build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] } } } };
+  </script>
+
+  <style>
+    :root {
+      --brand1: #ff7a00; /* naranja */
+      --brand2: #f43f5e; /* magenta/rose */
+      --bg: #0b0e13;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); }
+    /* Mesh background con gradientes radiales suaves */
+    .mesh-bg::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(60rem 60rem at 20% 10%, rgba(255,122,0,.15), transparent 60%),
+        radial-gradient(50rem 50rem at 80% 20%, rgba(244,63,94,.12), transparent 60%),
+        radial-gradient(40rem 40rem at 30% 80%, rgba(255,122,0,.10), transparent 60%),
+        radial-gradient(35rem 35rem at 80% 80%, rgba(244,63,94,.10), transparent 60%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Componentes */
+    .card { @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 shadow-sm; }
+    .btn-grad {
+      background-image: linear-gradient(90deg, var(--brand1), var(--brand2));
+      @apply text-white font-semibold px-5 py-3 rounded-xl shadow transition;
+      filter: saturate(1.05);
+    }
+    .btn-grad:hover { filter: brightness(1.05); }
+    .badge { @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm text-white/90; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.06); }
+    .brand-grad { background-image: linear-gradient(90deg, var(--brand1), var(--brand2)); }
+    .brand-text { background-image: linear-gradient(90deg, var(--brand1), var(--brand2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .nav-blur { backdrop-filter: saturate(140%) blur(8px); background-color: rgba(11,14,19,.6); }
+    .sr-only-focusable:focus { position: static; width: auto; height: auto; padding: .5rem; clip: auto; }
+  </style>
+</head>
+<body class="mesh-bg text-white/90 antialiased tracking-tight">
+  <a href="#contenido" class="sr-only sr-only-focusable">Saltar al contenido principal</a>
+
+  <!-- Navbar sticky -->
+  <header class="sticky top-0 z-50 nav-blur border-b border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="#" class="flex items-center gap-3">
+        <img src="/logo.png" alt="AI Solutions — desarrollo web, landings, automatizaciones e InstaAds" width="40" height="40" class="rounded-md" loading="eager" fetchpriority="high">
+        <span class="font-semibold">AI Solutions</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#servicios" class="hover:text-white">Servicios</a>
+        <a href="#proyectos" class="hover:text-white">Proyectos</a>
+        <a href="#marketing" class="hover:text-white">Marketing</a>
+        <a href="#contacto" class="hover:text-white">Contacto</a>
+        <a href="#contacto" class="btn-grad ml-2">Solicitar presupuesto</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden btn-grad" aria-label="Abrir menú">Menú</button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="md:hidden hidden border-t border-white/10">
+      <div class="px-4 py-3 flex flex-col gap-3 text-sm">
+        <a href="#servicios" class="hover:text-white">Servicios</a>
+        <a href="#proyectos" class="hover:text-white">Proyectos</a>
+        <a href="#marketing" class="hover:text-white">Marketing</a>
+        <a href="#contacto" class="hover:text-white">Contacto</a>
+        <a href="#contacto" class="btn-grad mt-2 text-center">Solicitar presupuesto</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- Hero -->
+    <section class="relative">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-10 items-center py-16">
+        <div>
+          <span class="badge">Nuevo • <span class="brand-text font-semibold">InstaAds</span> disponible</span>
+          <h1 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">Webs que convierten y procesos automatizados</h1>
+          <p class="mt-4 text-base sm:text-lg text-white/80">Desarrollo y digitalización web, landings de alto rendimiento, automatizaciones para empresas, soluciones a medida y marketing/publicidad.</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a href="#contacto" class="btn-grad" aria-label="Solicitar presupuesto ahora">Solicitar presupuesto</a>
+            <a href="#servicios" class="px-5 py-3 rounded-xl border border-white/15 hover:bg-white/5 transition" aria-label="Ver servicios">Ver servicios</a>
+          </div>
+
+          <!-- Métricas -->
+          <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="card"><p class="text-2xl font-bold">+38%</p><p class="text-xs text-white/70">conversión</p></div>
+            <div class="card"><p class="text-2xl font-bold">2–6</p><p class="text-xs text-white/70">sem de idea a producción</p></div>
+            <div class="card"><p class="text-2xl font-bold">99,95%</p><p class="text-xs text-white/70">uptime</p></div>
+            <div class="card"><p class="text-2xl font-bold">Core Vitals</p><p class="text-xs text-white/70">≥ 90 escritorio</p></div>
+          </div>
+        </div>
+
+        <!-- Vídeo -->
+        <div class="relative">
+          <!-- Si no tiene panel.mp4, este es un placeholder. Reemplazar ./panel.mp4 por el vídeo real. -->
+          <video id="heroVideo" class="w-full rounded-2xl border border-white/10 shadow-lg"
+                 src="./panel.mp4" autoplay muted loop playsinline controls preload="metadata"
+                 poster="./logo.png" aria-label="Panel de control de proyectos (vídeo demostrativo)">
+            Tu navegador no soporta vídeo HTML5.
+          </video>
+          <!-- Overlay fallback -->
+          <div id="videoOverlay" class="hidden absolute inset-0 grid place-items-center">
+            <button class="btn-grad text-sm" aria-label="Reproducir con sonido">Reproducir con sonido</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-8">Qué hacemos</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <!-- Card -->
+        <article class="card">
+          <div class="flex items-start gap-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+              <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand1)"/><stop offset="100%" stop-color="var(--brand2)"/></linearGradient></defs>
+              <path fill="url(#g1)" d="M4 5h16v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5zm2 2v10h12V7H6zm2 12h8v2H8z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Desarrollo & Digitalización Web</h3>
+              <p class="text-sm text-white/80">Sitios rápidos, CMS, SEO técnico.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="flex items-start gap-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+              <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand1)"/><stop offset="100%" stop-color="var(--brand2)"/></linearGradient></defs>
+              <path fill="url(#g2)" d="M3 6h18v2H3V6zm2 4h14v8H5v-8zm3 2v4h2v-4H8zm4 0v4h4v-4h-4z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Landings de Alto Rendimiento</h3>
+              <p class="text-sm text-white/80">Copy & visual orientado a conversión, A/B testing y analytics.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="flex items-start gap-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+              <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand1)"/><stop offset="100%" stop-color="var(--brand2)"/></linearGradient></defs>
+              <path fill="url(#g3)" d="M4 4h16v4H4V4zm0 6h10v4H4v-4zm0 6h16v4H4v-4z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Automatizaciones para Empresas</h3>
+              <p class="text-sm text-white/80">Bots, ETL, RPA con IA, reportes y alertas.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="flex items-start gap-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+              <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand1)"/><stop offset="100%" stop-color="var(--brand2)"/></linearGradient></defs>
+              <path fill="url(#g4)" d="M4 6h8l2 2h6v10H4V6z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Soluciones a Medida</h3>
+              <p class="text-sm text-white/80">React/Node/DB, permisos, auditoría, despliegue.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="flex items-start gap-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+              <defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand1)"/><stop offset="100%" stop-color="var(--brand2)"/></linearGradient></defs>
+              <path fill="url(#g5)" d="M12 3l2 4 4 .5-3 2.9.8 4.1-3.8-2.1-3.8 2.1.8-4.1L6 7.5 10 7z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Marketing / Publicidad</h3>
+              <p class="text-sm text-white/80">InstaAds (disponible) y Google Ads (próximamente).</p>
+            </div>
+          </div>
+        </article>
+        <article class="card">
+          <div class="flex items-start gap-3">
+            <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden="true">
+              <defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="var(--brand1)"/><stop offset="100%" stop-color="var(--brand2)"/></linearGradient></defs>
+              <path fill="url(#g6)" d="M4 5h16v2H4V5zm0 4h10v2H4V9zm0 6h16v2H4v-2zm0 4h10v2H4v-2z"/>
+            </svg>
+            <div>
+              <h3 class="font-semibold">Soporte & Growth</h3>
+              <p class="text-sm text-white/80">Roadmap, KPIs y mejoras mensuales.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Proyectos -->
+    <section id="proyectos" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-8">Resultados reales</h2>
+      <div class="grid md:grid-cols-3 gap-5">
+        <figure class="card">
+          <img src="./images/proyecto-1.svg" width="720" height="480" alt="Landing: +51% conversión (visual técnico)" loading="lazy" class="w-full h-auto rounded-xl">
+          <figcaption class="mt-3 text-sm text-white/80">Landing: “+51% conversión”</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="./images/proyecto-2.svg" width="720" height="480" alt="Automatización: −32% tareas manuales (visual técnico)" loading="lazy" class="w-full h-auto rounded-xl">
+          <figcaption class="mt-3 text-sm text-white/80">Automatización: “−32% tareas manuales”</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="./images/proyecto-3.svg" width="720" height="480" alt="InstaAds: CPL −27% (visual técnico)" loading="lazy" class="w-full h-auto rounded-xl">
+          <figcaption class="mt-3 text-sm text-white/80">InstaAds: “CPL −27%”</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Proceso -->
+    <section id="proceso" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-8">De briefing a resultados</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="card"><p class="text-sm text-white/70">01</p><p class="mt-2 font-semibold">Descubrimiento</p></div>
+        <div class="card"><p class="text-sm text-white/70">02</p><p class="mt-2 font-semibold">Propuesta</p></div>
+        <div class="card"><p class="text-sm text-white/70">03</p><p class="mt-2 font-semibold">Desarrollo</p></div>
+        <div class="card"><p class="text-sm text-white/70">04</p><p class="mt-2 font-semibold">Lanzamiento & Growth</p></div>
+      </div>
+    </section>
+
+    <!-- CTA Marketing -->
+    <section id="marketing" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-14">
+      <div class="card flex flex-col md:flex-row items-center justify-between gap-6">
+        <div>
+          <p class="text-xl font-semibold">¿Listo para activar InstaAds? <span class="text-white/70">Google Ads: próximamente.</span></p>
+          <p class="text-sm text-white/70 mt-1">Campañas de alto impacto con aprendizaje continuo.</p>
+        </div>
+        <a href="#contacto" class="btn-grad">Quiero empezar</a>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-6">Solicitar presupuesto</h2>
+
+      <div id="sentNotice" class="hidden mb-6 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-200 px-4 py-3">
+        <strong>¡Recibido!</strong> Te contactamos en breve.
+      </div>
+
+      <form action="https://formsubmit.co/Contacto@a-i-solutions.org" method="POST" class="grid gap-4 md:grid-cols-2">
+        <div>
+          <label for="nombre" class="block text-sm mb-1">Nombre*</label>
+          <input id="nombre" name="nombre" required type="text" class="w-full rounded-xl bg-white/5 border border-white/15 px-3 py-2" placeholder="Tu nombre">
+        </div>
+        <div>
+          <label for="email" class="block text-sm mb-1">Email*</label>
+          <input id="email" name="email" required type="email" class="w-full rounded-xl bg-white/5 border border-white/15 px-3 py-2" placeholder="tucorreo@empresa.com">
+        </div>
+        <div>
+          <label for="empresa" class="block text-sm mb-1">Empresa</label>
+          <input id="empresa" name="empresa" type="text" class="w-full rounded-xl bg-white/5 border border-white/15 px-3 py-2" placeholder="(opcional)">
+        </div>
+        <div>
+          <label for="servicio" class="block text-sm mb-1">Servicio</label>
+          <select id="servicio" name="servicio" class="w-full rounded-xl bg-white/5 border border-white/15 px-3 py-2">
+            <option value="">Selecciona una opción…</option>
+            <option>Desarrollo & Digitalización Web</option>
+            <option>Landings de Alto Rendimiento</option>
+            <option>Automatizaciones para Empresas</option>
+            <option>Soluciones a Medida</option>
+            <option>Marketing / Publicidad — InstaAds</option>
+            <option disabled>Marketing / Publicidad — Google Ads (próx.)</option>
+            <option>Soporte & Growth</option>
+          </select>
+        </div>
+        <div class="md:col-span-2">
+          <label for="detalle" class="block text-sm mb-1">Detalle*</label>
+          <textarea id="detalle" name="detalle" required rows="5" class="w-full rounded-xl bg-white/5 border border-white/15 px-3 py-2" placeholder="Cuéntanos qué necesitas"></textarea>
+        </div>
+
+        <!-- Hidden fields (FormSubmit) -->
+        <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto — AI Solutions">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_next" value="index.html?sent=1#contacto">
+        <input type="text" name="_honey" class="hidden" tabindex="-1" autocomplete="off">
+
+        <div class="md:col-span-2 flex items-center justify-between gap-4">
+          <button type="submit" class="btn-grad">Enviar</button>
+          <p class="text-xs text-white/60">Al enviar aceptas nuestros <a href="#" class="underline">Términos</a> y <a href="#" class="underline">Privacidad</a>.</p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <img src="/logo.png" alt="AI Solutions — desarrollo web, landings, automatizaciones e InstaAds" width="28" height="28" class="rounded">
+        <p class="text-sm text-white/70">© <span id="year"></span> AI Solutions — Desarrollo web, automatizaciones e InstaAds.</p>
+      </div>
+      <nav class="text-sm flex items-center gap-4">
+        <a href="#contacto" class="hover:text-white">Contacto</a>
+        <a href="#" class="hover:text-white">Privacidad</a>
+        <a href="#" class="hover:text-white">Términos</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- JS mínimo -->
+  <script defer>
+    // Mobile menu
+    document.getElementById('menuBtn')?.addEventListener('click', () => {
+      document.getElementById('mobileMenu')?.classList.toggle('hidden');
+    });
+
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Aviso "enviado" si ?sent=1
+    const params = new URLSearchParams(location.search);
+    if (params.get('sent') === '1') {
+      const notice = document.getElementById('sentNotice');
+      if (notice) notice.classList.remove('hidden');
+    }
+
+    // Fallback de autoplay/sonido del vídeo
+    const video = document.getElementById('heroVideo');
+    const overlay = document.getElementById('videoOverlay');
+    const overlayBtn = overlay?.querySelector('button');
+
+    async function ensureAutoplay() {
+      if (!video) return;
+      try {
+        await video.play();
+      } catch (err) {
+        // Mostrar overlay para permitir interacción del usuario
+        overlay?.classList.remove('hidden');
+      }
+    }
+    ensureAutoplay();
+
+    overlayBtn?.addEventListener('click', async () => {
+      try {
+        video.muted = false;
+        await video.play();
+        overlay.classList.add('hidden');
+      } catch (err) {
+        // Si falla, mostramos controles para que el usuario pueda darle al play
+        video.controls = true;
+      }
+    });
+  </script>
+
+  <!-- JSON-LD (estructurados) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "AI Solutions",
+        "url": "https://a-i-solutions.org/",
+        "logo": "/logo.png",
+        "email": "mailto:Contacto@a-i-solutions.org",
+        "sameAs": ["https://instagram.com/ai-solutions", "https://www.linkedin.com/company/ai-solutions"],
+        "contactPoint": [{"@type":"ContactPoint","contactType":"sales","email":"mailto:Contacto@a-i-solutions.org"}]
+      },
+      {
+        "@type": "WebSite",
+        "url": "https://a-i-solutions.org/",
+        "publisher": {"@type":"Organization","name":"AI Solutions","url":"https://a-i-solutions.org/"}
+      },
+      {
+        "@type": "Service",
+        "name": "Desarrollo web y automatizaciones",
+        "serviceType": [
+          "Desarrollo & Digitalización Web",
+          "Landings de Alto Rendimiento",
+          "Automatizaciones para Empresas",
+          "Soluciones a Medida",
+          "Marketing / Publicidad — InstaAds",
+          "Soporte & Growth"
+        ],
+        "areaServed": "Worldwide",
+        "provider": {"@type":"Organization","name":"AI Solutions","url":"https://a-i-solutions.org/"}
+      }
+    ]
+  }
+  </script>
+
+  <noscript>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-white/80">
+      Para la mejor experiencia activa JavaScript. El sitio funciona sin JS, pero algunas mejoras (vídeo y avisos) pueden no mostrarse.
+    </div>
+  </noscript>
+</body>
+</html>
